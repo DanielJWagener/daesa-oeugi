@@ -6,7 +6,7 @@ const MediaLink = ({ media }: { media: MediaItem }) => {
 
   return (
     <li className="text-2xl font-semibold">
-      <Link to={serial ? `${id}/episodes` : `${id}/scenes`}>{label}</Link>
+      <Link to={serial ? `${id}` : `${id}/scene`}>{label}</Link>
     </li>
   );
 };

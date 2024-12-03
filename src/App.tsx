@@ -14,9 +14,9 @@ function App() {
         <Route index element={<MediaList />} />
 
         {/* Serial e.g. TV show*/}
-        <Route path=":media/episodes" element={<EpisodeList />} />
-        <Route path=":media/episodes/:episode" element={<SceneList />} />
-        <Route path=":media/episodes/:episode/scene/:scene" element={<Scene />} />
+        <Route path=":media/" element={<EpisodeList />} />
+        <Route path=":media/episode/:episode" element={<SceneList />} />
+        <Route path=":media/episode/:episode/scene/:scene" element={<Scene />} />
 
         {/* Standalone e.g. movie */}
         <Route path=":media/scenes" element={<SceneList />} />
