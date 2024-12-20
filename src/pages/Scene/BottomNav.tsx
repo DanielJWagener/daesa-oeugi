@@ -33,6 +33,7 @@ const BottomNav = ({
 
   const showPreviousLine = useCallback(() => {
     if (!script) return;
+
     if (lineIndex === 0) {
       if (sceneIndex > 0) {
         const previousSceneIndex = sceneIndex - 1;
@@ -44,9 +45,25 @@ const BottomNav = ({
       return;
     }
 
-    const prevLineIndex = lineIndex - 1;
-    setLineIndex(prevLineIndex);
-  }, [lineIndex, sceneIndex, script, setLineIndex, setSceneIndex]);
+    const previousLineIndex = lineIndex - 1;
+
+    // don't display character names when going backwards
+    const previousLine = currentScene?.lines[previousLineIndex];
+    const previousSpeaker = previousLine?.speaker;
+    if (previousSpeaker) {
+      setSeenCharacters(prev => [...prev, previousLine?.speaker]);
+    }
+
+    setLineIndex(previousLineIndex);
+  }, [
+    currentScene?.lines,
+    lineIndex,
+    sceneIndex,
+    script,
+    setLineIndex,
+    setSceneIndex,
+    setSeenCharacters
+  ]);
 
   const showNextLine = useCallback(() => {
     const currentScene = script?.[sceneIndex];
