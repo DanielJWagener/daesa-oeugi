@@ -16,7 +16,7 @@ const EpisodeList = () => {
           if (episodeListRepsonse.length === 0) {
             setError("No episodes found");
           }
-          if (episodeListRepsonse.length === 100) {
+          if (episodeListRepsonse.length === 1) {
             navigate(`/${media}/episode/1`);
           } else {
             setEpisodeList(res.default);
@@ -27,7 +27,8 @@ const EpisodeList = () => {
           setError(e.message);
         });
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (error) {
     return <h2>오류가 발생했습니다. 회차를 못 불러왔습니다</h2>;
