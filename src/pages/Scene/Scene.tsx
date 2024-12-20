@@ -1,6 +1,4 @@
 import { useCallback, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import BackButton from "./BackButton";
 import BottomNav from "./BottomNav";
@@ -8,6 +6,7 @@ import LineDisplay from "./LineDisplay";
 import SceneHeader from "./SceneHeader";
 import useLoadScript from "./useLoadScript";
 import useCharacterManager from "./useCharacterManager";
+import LoadingScreen from "../../components/LoadingScreen";
 
 const SceneDisplay = () => {
   const [lineIndex, setLineIndex] = useState<number>(0);
@@ -28,7 +27,7 @@ const SceneDisplay = () => {
   }
 
   if (loading) {
-    return <FontAwesomeIcon icon={faSpinner} spin />;
+    return <LoadingScreen />;
   }
 
   const currentScene = script?.[sceneIndex];

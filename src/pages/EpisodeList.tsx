@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 
+import LoadingScreen from "../components/LoadingScreen";
+
 const EpisodeList = () => {
   const { media } = useParams();
   const [episodeList, setEpisodeList] = useState<string[]>();
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
 
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ const EpisodeList = () => {
             navigate(`/${media}/episode/1`);
           } else {
             setEpisodeList(res.default);
+            setLoading(false);
           }
         })
         .catch(e => {
@@ -32,6 +36,10 @@ const EpisodeList = () => {
 
   if (error) {
     return <h2>오류가 발생했습니다. 회차를 못 불러왔습니다</h2>;
+  }
+
+  if (loading) {
+    return <LoadingScreen />;
   }
 
   return (
