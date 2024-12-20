@@ -15,10 +15,10 @@ const useCharacterManager = () => {
   const colorClassLookup = useMemo(
     () =>
       ({
-        cyan: "text-cyan-700",
-        orange: "text-orange-600",
-        red: "text-red-700",
-        fuchsia: "text-fuchsia-700"
+        cyan: "text-cyan-700 dark:text-cyan-300",
+        orange: "text-orange-600 dark:text-orange-300",
+        red: "text-red-700 dark:text-red-300",
+        fuchsia: "text-fuchsia-700 dark:text-fuchsia-300"
       } as Record<string, string>),
     []
   );
@@ -27,7 +27,7 @@ const useCharacterManager = () => {
     if (!character) return "neutral";
     console.log({ character, colorLookup, result: colorLookup[character] });
     const characterColor = colorLookup[character];
-    const colorClass = colorClassLookup[characterColor] || "text-neutral-700";
+    const colorClass = colorClassLookup[characterColor] || "text-neutral-700 dark:text-neutral-200";
     return colorClass;
   };
 
