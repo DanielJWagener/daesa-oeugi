@@ -3,7 +3,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const LoadingScreen = () => {
   return (
-    <div className="w-screen h-screen grid place-content-center">
+    <div className="loading-icon w-screen h-screen grid place-content-center">
       <FontAwesomeIcon icon={faSpinner} spin size="6x" />
     </div>
   );
