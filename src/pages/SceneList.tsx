@@ -10,7 +10,7 @@ const SceneList = () => {
 
   useEffect(() => {
     if (media) {
-      import(`../assets/${media}/scenes/${episode}.json`)
+      import(`../assets/${media}/episodes/${episode}/scene-index.json`)
         .then(res => {
           const sceneListResponse = res.default;
           if (sceneListResponse.length === 0) {
