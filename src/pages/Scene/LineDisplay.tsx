@@ -14,8 +14,10 @@ const LineDisplay = ({ currentScene, hasCharacterBeenSeen, lineIndex }: LineDisp
   const showCharacterName = character && !hasCharacterBeenSeen(character);
   return currentLine ? (
     <div>
-      {showCharacterName && <p>{`${character}:`}</p>}
-      <p>{lineText}</p>
+      <div className="h-full px-5 grid place-content-center">
+        {showCharacterName && <p className="text-center mb-3">{`${character}:`}</p>}
+        <p className="text-center">{lineText}</p>
+      </div>
     </div>
   ) : (
     <></>

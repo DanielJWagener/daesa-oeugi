@@ -1,48 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useCallback, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import BackButton from "./BackButton";
 import BottomNav from "./BottomNav";
 import LineDisplay from "./LineDisplay";
-import { Scene } from "./sceneTypes";
 import SceneHeader from "./SceneHeader";
+import useLoadScript from "./useLoadScript";
 
 const SceneDisplay = () => {
-  const { media, episode, scene } = useParams();
-
-  const [script, setScript] = useState<Scene[]>();
   const [lineIndex, setLineIndex] = useState<number>(0);
   const [sceneIndex, setSceneIndex] = useState<number>(0);
-  const [error, setError] = useState<string>();
-  const [loading, setLoading] = useState<boolean>(true);
   const [seenCharacters, setSeenCharacters] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (media) {
-      import(`../../assets/${media}/episodes/${episode}/script.json`)
-        .then(res => {
-          const sceneListResponse = res.default;
-          if (sceneListResponse.length === 0) {
-            setError("Could not load scene");
-          }
-
-          const scriptResponse = res.default as Scene[];
-          setScript(scriptResponse);
-
-          const sceneIndex = scriptResponse.findIndex((x: Scene) => x.key === scene);
-          setSceneIndex(sceneIndex);
-          setLoading(false);
-        })
-        .catch(e => {
-          console.error(e);
-          setLoading(false);
-          setError(e.message);
-        });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { error, loading, script } = useLoadScript({ setSceneIndex });
 
   const hasCharacterBeenSeen = useCallback(
     (character: string) => seenCharacters.includes(character),
@@ -61,13 +32,16 @@ const SceneDisplay = () => {
 
   return (
     <div className="w-full">
-      <BackButton />
-      <SceneHeader currentScene={currentScene} />
-      <LineDisplay
-        currentScene={currentScene}
-        hasCharacterBeenSeen={hasCharacterBeenSeen}
-        lineIndex={lineIndex}
-      />
+      <div className="h-screen p-3 pb-24 grid grid-rows-[auto_auto_1fr] overflow-y-scroll">
+        <BackButton />
+        <SceneHeader currentScene={currentScene} />
+        <LineDisplay
+          currentScene={currentScene}
+          hasCharacterBeenSeen={hasCharacterBeenSeen}
+          lineIndex={lineIndex}
+        />
+      </div>
+
       <BottomNav
         currentScene={currentScene}
         hasCharacterBeenSeen={hasCharacterBeenSeen}
