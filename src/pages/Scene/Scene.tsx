@@ -7,6 +7,7 @@ import BottomNav from "./BottomNav";
 import LineDisplay from "./LineDisplay";
 import SceneHeader from "./SceneHeader";
 import useLoadScript from "./useLoadScript";
+import useCharacterManager from "./useCharacterManager";
 
 const SceneDisplay = () => {
   const [lineIndex, setLineIndex] = useState<number>(0);
@@ -19,6 +20,8 @@ const SceneDisplay = () => {
     (character: string) => seenCharacters.includes(character),
     [seenCharacters]
   );
+
+  const { getColorClassForCharacter } = useCharacterManager();
 
   if (error) {
     return <h2>오류가 발생했습니다. 장면의 대사들을 못 불러왔습니다</h2>;
@@ -37,6 +40,7 @@ const SceneDisplay = () => {
         <SceneHeader currentScene={currentScene} />
         <LineDisplay
           currentScene={currentScene}
+          getColorForCharacter={getColorClassForCharacter}
           hasCharacterBeenSeen={hasCharacterBeenSeen}
           lineIndex={lineIndex}
         />
