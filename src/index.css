@@ -43,6 +43,15 @@ h1 {
   line-height: 1.1;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-neutral-700 dark:text-neutral-200;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -50,9 +59,9 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
+  @apply bg-slate-200 text-slate-700 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-200;
 }
 button:hover {
   border-color: #646cff;

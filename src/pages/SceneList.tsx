@@ -35,13 +35,13 @@ const SceneList = () => {
 
   return (
     sceneList && (
-      <>
+      <div className="h-full w-full px-3">
         <h1 className="my-5 noto-sans-kr-400">장면</h1>
         <ul>
           {sceneList.map((x, i) => {
             const sceneNumber = i + 1;
             return (
-              <li key={x} className="text-2xl noto-sans-kr-400">
+              <li key={x} className="text-3xl noto-sans-kr-400 mb-2">
                 <Link to={`/${media}/episode/${episode}/scene/${sceneNumber}`}>
                   <span className="noto-sans-kr-600">{`${sceneNumber}장:`}</span> {x}
                 </Link>
@@ -49,7 +49,7 @@ const SceneList = () => {
             );
           })}
         </ul>
-      </>
+      </div>
     )
   );
 };
