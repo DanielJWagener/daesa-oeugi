@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { HashRouter, Routes, Route } from "react-router";
 
 import "./App.css";
 
@@ -9,7 +9,7 @@ import SceneList from "./pages/SceneList";
 
 function App() {
   return (
-    <BrowserRouter basename="/daesa-oeugi">
+    <HashRouter>
       <Routes>
         <Route index element={<MediaList />} />
 
@@ -22,7 +22,7 @@ function App() {
         <Route path=":media/scenes" element={<SceneList />} />
         <Route path=":media/scenes/scene/:scene" element={<Scene />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
