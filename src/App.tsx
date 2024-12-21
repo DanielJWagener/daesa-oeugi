@@ -9,7 +9,7 @@ import SceneList from "./pages/SceneList";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/daesa-oeugi">
       <Routes>
         <Route index element={<MediaList />} />
 
