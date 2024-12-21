@@ -24,10 +24,11 @@ const useCharacterManager = () => {
   );
 
   const getColorClassForCharacter = (character: string | undefined) => {
-    if (!character) return "neutral";
-    console.log({ character, colorLookup, result: colorLookup[character] });
+    const neutralTextClass = "text-neutral-700 dark:text-neutral-200";
+    if (!character) return neutralTextClass;
+
     const characterColor = colorLookup[character];
-    const colorClass = colorClassLookup[characterColor] || "text-neutral-700 dark:text-neutral-200";
+    const colorClass = colorClassLookup[characterColor] || neutralTextClass;
     return colorClass;
   };
 
