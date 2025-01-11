@@ -26,7 +26,7 @@ const LineDisplay = ({
         {showCharacterName && (
           <p className={`text-center text-2xl mb-3 ${color}`}>{`${character}:`}</p>
         )}
-        <p className={`text-center text-3xl break-keep ${color}`}>{lineText}</p>
+        <p className={`text-center text-3xl leading-normal break-keep ${color}`}>{lineText}</p>
       </div>
     </div>
   ) : (
