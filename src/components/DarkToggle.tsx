@@ -6,8 +6,6 @@ const DarkToggle = () => {
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e);
-      console.log(e.target.checked);
       setTheme(e.target.checked ? "dark" : "light");
     },
     [setTheme]
