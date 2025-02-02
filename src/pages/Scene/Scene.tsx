@@ -35,10 +35,12 @@ const SceneDisplay = () => {
 
   return (
     <div className="w-full">
-      <div className="h-screen p-3 pb-24 grid grid-rows-[auto_auto_1fr] overflow-y-scroll">
-        <div className="flex justify-between">
+      <div className="h-screen px-3 pb-24 grid grid-rows-[auto_auto_1fr] overflow-y-scroll">
+        <div className="flex justify-between h-[97px] items-center">
           <BackButton />
-          <DarkToggle />
+          <div className="self-center">
+            <DarkToggle />
+          </div>
         </div>
         <SceneHeader currentScene={currentScene} />
         <LineDisplay

@@ -4,6 +4,8 @@ import { Link, useNavigate, useParams } from "react-router";
 import LoadingScreen from "../components/LoadingScreen";
 import { ScriptDynamicImport } from "../types";
 import DarkToggle from "../components/DarkToggle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const SceneList = () => {
   const { media, episode } = useParams();
@@ -46,7 +48,7 @@ const SceneList = () => {
   return (
     sceneList && (
       <div className="h-full w-full px-3">
-        <header className="flex justify-between items-center">
+        <header className="flex justify-between items-center h-[97px]">
           <h1 className="my-5 noto-sans-kr-400">장면</h1>
           <DarkToggle />
         </header>
@@ -54,10 +56,24 @@ const SceneList = () => {
           {sceneList.map((x, i) => {
             const sceneNumber = i + 1;
             return (
-              <li key={x} className="text-3xl noto-sans-kr-400 mb-2">
-                <Link to={`/${media}/episode/${episode}/scene/${sceneNumber}`}>
-                  <span className="noto-sans-kr-600">{`${sceneNumber}장:`}</span>{" "}
-                  {x}
+              <li
+                key={x}
+                className="text-3xl noto-sans-kr-400 py-3 border-b border-neutral-300 dark:border-neutral-500"
+              >
+                <Link
+                  className="text-neutral-600 dark:text-neutral-300 block"
+                  to={`/${media}/episode/${episode}/scene/${sceneNumber}`}
+                >
+                  <div className="inline-flex justify-between items-center w-full">
+                    <div>
+                      <span className="noto-sans-kr-600">{`${sceneNumber}장:`}</span>{" "}
+                      {x}
+                    </div>
+                    <FontAwesomeIcon
+                      className="mr-3 text-cyan-600 dark:text-cyan-300 text-2xl"
+                      icon={faArrowRight}
+                    />
+                  </div>
                 </Link>
               </li>
             );
