@@ -7,6 +7,7 @@ import SceneHeader from "./SceneHeader";
 import useLoadScript from "./useLoadScript";
 import useCharacterManager from "./useCharacterManager";
 import LoadingScreen from "../../components/LoadingScreen";
+import DarkToggle from "../../components/DarkToggle";
 
 const SceneDisplay = () => {
   const [lineIndex, setLineIndex] = useState<number>(0);
@@ -35,7 +36,10 @@ const SceneDisplay = () => {
   return (
     <div className="w-full">
       <div className="h-screen p-3 pb-24 grid grid-rows-[auto_auto_1fr] overflow-y-scroll">
-        <BackButton />
+        <div className="flex justify-between">
+          <BackButton />
+          <DarkToggle />
+        </div>
         <SceneHeader currentScene={currentScene} />
         <LineDisplay
           currentScene={currentScene}

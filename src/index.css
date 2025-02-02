@@ -1,3 +1,4 @@
+/* @import "tailwindcss"; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +11,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   @apply bg-white;
+  @apply dark:bg-gray-900;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -36,6 +38,7 @@ body {
   margin: 0;
   padding: 0;
   @apply bg-white;
+  @apply dark:bg-gray-900;
 }
 
 h1 {
@@ -98,13 +101,4 @@ button:focus-visible {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    @apply dark:bg-gray-900;
-  }
-  body {
-    @apply dark:bg-gray-900;
-  }
 }
