@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 
 import LoadingScreen from "../components/LoadingScreen";
+import { ScriptDynamicImport } from "../types";
 
 const SceneList = () => {
   const { media, episode } = useParams();
@@ -13,8 +14,8 @@ const SceneList = () => {
 
   useEffect(() => {
     if (media) {
-      import(`../assets/${media}/episodes/${episode}/scene-index.json`)
-        .then(res => {
+      import(`../assets/${media}/episodes/${episode}/script.json`)
+        .then((res: ScriptDynamicImport) => {
           const sceneListResponse = res.default;
           if (sceneListResponse.length === 0) {
             setError("No scenes found");
@@ -22,7 +23,7 @@ const SceneList = () => {
           if (sceneListResponse.length === 1) {
             navigate(`/${media}/episode/${episode}/scene/1`);
           } else {
-            setSceneList(res.default);
+            setSceneList(res.default.map(x => x.title));
             setLoading(false);
           }
         })
