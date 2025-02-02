@@ -23,13 +23,16 @@ const BottomNav = ({
   script,
   setLineIndex,
   setSceneIndex,
-  setSeenCharacters
+  setSeenCharacters,
 }: BottomNavPropTypes) => {
   const showBackButton = !(sceneIndex === 0 && lineIndex === 0);
   const showForwardButton =
     script &&
     currentScene &&
-    !(sceneIndex === script.length - 1 && lineIndex === currentScene.lines.length - 1);
+    !(
+      sceneIndex === script.length - 1 &&
+      lineIndex === currentScene.lines.length - 1
+    );
 
   const showPreviousLine = useCallback(() => {
     if (!script) return;
@@ -51,7 +54,7 @@ const BottomNav = ({
     const previousLine = currentScene?.lines[previousLineIndex];
     const previousSpeaker = previousLine?.speaker;
     if (previousSpeaker) {
-      setSeenCharacters(prev => [...prev, previousLine?.speaker]);
+      setSeenCharacters((prev) => [...prev, previousLine?.speaker]);
     }
 
     setLineIndex(previousLineIndex);
@@ -62,7 +65,7 @@ const BottomNav = ({
     script,
     setLineIndex,
     setSceneIndex,
-    setSeenCharacters
+    setSeenCharacters,
   ]);
 
   const showNextLine = useCallback(() => {
@@ -82,7 +85,7 @@ const BottomNav = ({
     // Mark current character as seen
     const character = script[sceneIndex].lines[lineIndex].speaker;
     if (!hasCharacterBeenSeen(character)) {
-      setSeenCharacters(prev => [...prev, character]);
+      setSeenCharacters((prev) => [...prev, character]);
     }
 
     const nextLineIndex = lineIndex + 1;
@@ -94,20 +97,26 @@ const BottomNav = ({
     script,
     setLineIndex,
     setSceneIndex,
-    setSeenCharacters
+    setSeenCharacters,
   ]);
 
   return (
     <div className="w-full flex justify-between fixed bottom-0 p-5">
       <button
         onClick={showPreviousLine}
-        className={`rounded-md ${showBackButton ? "opacity-100" : "opacity-0"}`}
+        className={`rounded-md ${
+          showBackButton ? "opacity-100" : "opacity-0"
+        } dark:focus:ring-cyan-300 dark:hover:border-cyan-300
+        focus:ring-cyan-200 hover:border-cyan-200`}
       >
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <button
         onClick={showNextLine}
-        className={`rounded-md ${showForwardButton ? "opacity-100" : "opacity-0"}`}
+        className={`rounded-md ${
+          showForwardButton ? "opacity-100" : "opacity-0"
+        } dark:focus:ring-cyan-300 dark:hover:border-cyan-300
+        focus:ring-cyan-200 hover:border-cyan-200`}
       >
         <FontAwesomeIcon icon={faArrowRight} />
       </button>
