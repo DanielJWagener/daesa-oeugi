@@ -21,7 +21,7 @@ const SceneDisplay = () => {
     [seenCharacters]
   );
 
-  const { getColorClassForCharacter } = useCharacterManager();
+  const { getColorClassForCharacter } = useCharacterManager({ sceneIndex });
 
   if (error) {
     return <h2>오류가 발생했습니다. 장면의 대사들을 못 불러왔습니다</h2>;
