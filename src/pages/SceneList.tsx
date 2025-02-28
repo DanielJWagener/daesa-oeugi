@@ -53,12 +53,17 @@ const SceneList = () => {
           <DarkToggle />
         </header>
         <ul>
-          {sceneList.map((x, i) => {
+          {sceneList.map((x, i, arr) => {
+            const sceneListLength = arr.length;
+            const lastScene = i === sceneListLength - 1;
             const sceneNumber = i + 1;
+            const borderClass = lastScene
+              ? ""
+              : "border-b border-neutral-300 dark:border-neutral-500";
             return (
               <li
                 key={x}
-                className="text-3xl noto-sans-kr-400 py-3 border-b border-neutral-300 dark:border-neutral-500"
+                className={`text-3xl noto-sans-kr-400 py-3 ${borderClass}`}
               >
                 <Link
                   className="text-neutral-600 dark:text-neutral-300 block"
