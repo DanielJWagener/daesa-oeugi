@@ -11,10 +11,11 @@ const LineDisplay = ({
   currentScene,
   getColorForCharacter,
   hasCharacterBeenSeen,
-  lineIndex
+  lineIndex,
 }: LineDisplayProps) => {
   const currentLine = currentScene?.lines[lineIndex];
   const lineText = currentLine?.line;
+  console.log({ lineText });
   const character = currentLine?.speaker;
 
   const color = getColorForCharacter(character);
@@ -24,9 +25,15 @@ const LineDisplay = ({
     <div>
       <div className={`h-full px-5 grid place-content-center ${color}`}>
         {showCharacterName && (
-          <p className={`text-center text-2xl mb-3 ${color}`}>{`${character}:`}</p>
+          <p
+            className={`text-center text-2xl mb-3 ${color}`}
+          >{`${character}:`}</p>
         )}
-        <p className={`text-center text-3xl leading-normal break-keep ${color}`}>{lineText}</p>
+        <p
+          className={`text-center text-3xl leading-normal break-keep whitespace-pre-line ${color}`}
+        >
+          {lineText}
+        </p>
       </div>
     </div>
   ) : (
