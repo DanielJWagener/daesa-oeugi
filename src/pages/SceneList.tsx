@@ -63,7 +63,7 @@ const SceneList = () => {
             return (
               <li
                 key={x}
-                className={`text-3xl noto-sans-kr-400 py-3 ${borderClass}`}
+                className={`text-2xl noto-sans-kr-400 py-3 ${borderClass}`}
               >
                 <Link
                   className="text-neutral-600 dark:text-neutral-300 block"
