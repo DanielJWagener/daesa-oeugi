@@ -15,7 +15,7 @@ const LineDisplay = ({
 }: LineDisplayProps) => {
   const currentLine = currentScene?.lines[lineIndex];
   const lineText = currentLine?.line;
-  console.log({ lineText });
+
   const character = currentLine?.speaker;
 
   const color = getColorForCharacter(character);

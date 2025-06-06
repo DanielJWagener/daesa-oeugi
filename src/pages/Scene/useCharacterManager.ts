@@ -47,6 +47,7 @@ const useCharacterManager = ({ sceneIndex }: CharacterManagerArgs) => {
         수연: "indigo",
         민우: "lime",
         선영: "sky",
+        그라미: "violet",
       } as Record<string, string>),
     []
   );
@@ -73,6 +74,7 @@ const useCharacterManager = ({ sceneIndex }: CharacterManagerArgs) => {
         slate: "text-slate-700 dark:text-slate-300",
         sky: "text-sky-700 dark:text-sky-300",
         yellow: "text-yellow-700 dark:text-yellow-300",
+        violet: "text-violet-700 dark:text-violet-300",
       } as Record<string, string>),
     []
   );
